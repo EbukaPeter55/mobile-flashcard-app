@@ -33,6 +33,9 @@ const NewDeck = () => {
     )
 };
 
+
+export default NewDeck;
+
 const style = StyleSheet.create({
     container: {
         alignItems: 'center',

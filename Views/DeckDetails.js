@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 
 
-const DeckList = () => {
+const DeckDetails = () => {
 
     return (
 

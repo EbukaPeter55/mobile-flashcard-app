@@ -6,6 +6,9 @@ import { Button } from "react-native-paper";
 
 
 const HomeView = () => {
+
+    return (
+
     <View style={styles.container}>
         <View style={styles.container}> 
             <View style={styles.Button}>
@@ -16,6 +19,7 @@ const HomeView = () => {
         </View>
 
     </View>
+    )
 
 
 }

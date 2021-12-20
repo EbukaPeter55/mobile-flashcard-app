@@ -9,3 +9,7 @@ const Quiz = () => {
         <Text>Quiz</Text>
     </View>
 }
+
+
+
+export default Quiz;
