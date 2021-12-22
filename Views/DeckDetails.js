@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Button, Card, Paragraph } from 'react-native-paper';
 
 
-const DeckDetails = (props) =>{
+export default function DeckList(props){
 
     const params = props.route.params;
   const {title} = params;
@@ -25,7 +25,7 @@ const DeckDetails = (props) =>{
             onPress={() => {
               props.navigation.navigate('NewCard', {title});
             }}>
-            New Card
+            Add Card
           </Button>
         </View>
         <View style={styles.buttonSpacing}>
@@ -43,7 +43,6 @@ const DeckDetails = (props) =>{
   );
 }
 
-export default DeckDetails;
 
 
 const styles = StyleSheet.create({

@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { TextInput, Text, Button } from 'react-native-paper';
 
 
-export default function NewDeck ({navigation}){
+const NewDeck = ({navigation}) => {
     const dispatch = useDispatch();
     const [deckName, setDeckName] = useState('');
   
@@ -45,6 +45,8 @@ export default function NewDeck ({navigation}){
     )
 };
 
+
+export default NewDeck;
 
 const style = StyleSheet.create({
     container: {
