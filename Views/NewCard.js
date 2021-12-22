@@ -5,7 +5,7 @@ import { TextInput, Button } from 'react-native-paper';
 
 
 
-const NewCard = () => {
+export default function NewCard() {
 // Using a controlled state since this is a controlled component
 const [question, setNewQuestion] = useState('');
 const [answer, setNewAnswer] = useState('');
@@ -50,7 +50,6 @@ const handleAnsInput = answer => {
 
 
 
-export default NewCard;
 
 
 const styles = StyleSheet.create({

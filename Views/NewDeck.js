@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { TextInput, Text, Button } from 'react-native-paper';
 
 
-const NewDeck = () => {
+export default function NewDeck (){
 
     return (
         <View>
@@ -33,8 +33,6 @@ const NewDeck = () => {
     )
 };
 
-
-export default NewDeck;
 
 const style = StyleSheet.create({
     container: {

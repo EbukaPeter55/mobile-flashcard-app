@@ -21,7 +21,7 @@ const ScreenHeaderStyles = {
 
 };
 
-const MainComponent = () => {
+export default function MainComponent () {
     return (
 
         <NavigationContainer>
@@ -60,4 +60,3 @@ const MainComponent = () => {
 };
 
 
-export default MainComponent;

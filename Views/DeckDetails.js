@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 
 
-const DeckDetails = () => {
+export default function DeckDetails(){
 
     return (
 
@@ -24,4 +24,3 @@ const DeckDetails = () => {
     )
 }
 
-export default DeckDetails;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const NewQuestion = () => {
+export default function NewQuestion(){
 
     return (
 
@@ -12,4 +12,3 @@ const NewQuestion = () => {
 }
 
 
-export default NewQuestion;

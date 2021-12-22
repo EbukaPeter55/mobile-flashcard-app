@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 
-const Quiz = () => {
+export default function Quiz () {
 
     <View>
         <Text>Quiz</Text>
@@ -12,4 +12,3 @@ const Quiz = () => {
 
 
 
-export default Quiz;
