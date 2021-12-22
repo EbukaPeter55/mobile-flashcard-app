@@ -4,7 +4,17 @@ import { View, StyleSheet } from 'react-native';
 import { TextInput, Text, Button } from 'react-native-paper';
 
 
-export default function NewDeck (){
+export default function NewDeck ({navigation}){
+    const dispatch = useDispatch();
+    const [deckName, setDeckName] = useState('');
+  
+    const handleDeckName = deckName => {
+      setDeckName(deckName);
+    };
+    const handleNewDeckSubmit = () => {
+      dispatch({type: 'ADD_NEW_DECK', payload: {title: deckName}});
+      navigation.navigate('Decks');
+    };
 
     return (
         <View>
@@ -15,7 +25,7 @@ export default function NewDeck (){
                 style={style.input}
                 mode="flat"
                 placeholder="Deck Name"
-                // onChangeText={}
+                onChangeText={handleDeckName}
                 />
                 </View> 
                 <View style={style.buttonContainer}>
@@ -24,7 +34,9 @@ export default function NewDeck (){
                     title="submit"
                     raised
                     dark
-                    mode="contained">
+                    mode="contained"
+                    onPress={handleNewDeckSubmit}
+                    >
                     Submit
                     </Button>
                 </View>

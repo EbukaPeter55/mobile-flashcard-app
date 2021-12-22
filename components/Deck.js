@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
 import {Button, Card, Paragraph, Divider} from 'react-native-paper';
 
-export default function Deck(props) {
+const Deck = (props) => {
   const dispatch = useDispatch();
   const name = props.name;
   const cardNumber = props.cardsNumber;
@@ -36,6 +36,9 @@ export default function Deck(props) {
     </View>
   );
 }
+
+
+export default Deck;
 
 const styles = StyleSheet.create({
   container: {
