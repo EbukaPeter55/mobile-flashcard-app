@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { View, StyleSheet } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
-// import { ADD_CARD } from '../actions';
+import { View } from 'react-native';
 import { ADD_CARD } from '../redux/types';
+import CardView from '../components/CardView';
 
 
-export default function NewCard(props) {
+const NewCard = (props) => {
     const title = props.route.params.title;
     const navigation = props.navigation;
     const dispatch = useDispatch();
+
 // Using a controlled state since this is a controlled component
 const [question, setNewAddedQuestion] = useState('');
 const [answer, setNewAddedAnswer] = useState('');
@@ -31,44 +31,20 @@ const handleNewlyAddedQuestion = () => {
     return (
 
         <View>
-        <View>
-          <TextInput
-            mode="flat"
-            placeholder="Type your question"
-            onChangeText={handleQuesInput}
+          <CardView
+          handleQuesInput={handleQuesInput}
+          handleAnsInput={handleAnsInput}
+          handleNewlyAddedQuestion={handleNewlyAddedQuestion}
           />
-          <TextInput
-            mode="flat"
-            placeholder="Type your answer"
-            onChangeText={handleAnsInput}
-          />
-          <View style={styles.buttonWrapper}>
-            <Button
-              raised
-              dark
-              theme={{roundness: 6}}
-              mode="contained"
-              onPress={handleNewlyAddedQuestion}
-              style={styles.button}>
-              Create question
-            </Button>
-          </View>
-        </View>
+       
       </View>
     )
-}
+};
+
+
+
+export default NewCard;
 
 
 
 
-
-const styles = StyleSheet.create({
-    button: {
-        marginTop: 490,
-        width: '90%'
-    },
-    buttonWrapper: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})

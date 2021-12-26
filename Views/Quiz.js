@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react';
-import { View,  StyleSheet } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useState } from 'react';
+import { View,  StyleSheet, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 import {
     Button,
     Text,
@@ -9,14 +9,15 @@ import {
     Dialog,
     Portal,
     Divider,
-  } from 'react-native-paper';
+  } 
+  from 'react-native-paper';
 import { computePercentage } from '../utils/helpers';
 import { setLocalNotification, clearLocalNotification } from '../utils/notifications';
 
 
 const Quiz = (props) => {
   const title = props.route.params.title;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
@@ -42,7 +43,7 @@ const Quiz = (props) => {
     }
   };
   
-  const handleCorrectClick = correctness => {
+  const manageClick = correctness => {
     if (questionIndex <= totalQuestions - 1) {
       if (correctness === 'correct') {
         setCorrectAnswers(correctAnswers + 1);
@@ -57,14 +58,14 @@ const Quiz = (props) => {
       }
     }
   };
-  const handleDismissDialog = () => {
+  const restartQuestion = () => {
     setCorrectAnswers(0);
     setQuestionIndex(0);
     setShowQuestion(true);
     setShowFinalMessage(false);
     setAnswer(questions[questionIndex] && questions[questionIndex]['question']);
   };
-  const cancelDialogDisplay = () => {
+  const hideDialog = () => {
     setShowQuestion(true);
     setShowFinalMessage(false);
   };
@@ -72,10 +73,13 @@ const Quiz = (props) => {
 return (
 
     <View>
-      <View style={gameStyles.container}>
+      <View style={styles.container}>
         <View>
-          <Card mode="outlined" style={gameStyles.card}>
-            <Card.Title subtitle="Select a Question and Answer" />
+          <Card mode="outlined" style={styles.card}>
+            <Card.Title 
+            style={styles.titleStyle}
+            subtitle="Kindly choose whether question is 
+            correct for each question" />
             <Card.Content>
               <Paragraph>
                 {' '}
@@ -90,8 +94,8 @@ return (
                   <Portal>
                     <Dialog
                       visible={showFinalMessage}
-                      onDismiss={handleDismissDialog}>
-                      <Dialog.Title>QUIZ COMPLETED !!</Dialog.Title>
+                      onDismiss={restartQuestion}>
+                      <Dialog.Title>END OF QUIZ!!</Dialog.Title>
                       <Dialog.Content>
                         <Paragraph>
                           Correct Score:
@@ -99,8 +103,8 @@ return (
                         </Paragraph>
                       </Dialog.Content>
                       <Dialog.Actions>
-                        <Button onPress={cancelDialogDisplay}>Cancel</Button>
-                        <Button onPress={handleDismissDialog}>Restart</Button>
+                        <Button onPress={hideDialog}>Cancel</Button>
+                        <Button onPress={restartQuestion}>Restart</Button>
                       </Dialog.Actions>
                     </Dialog>
                   </Portal>
@@ -113,43 +117,45 @@ return (
           <Divider />
         </View>
       </View>
-      <View style={gameStyles.btnContainer}>
+      <View style={styles.btnWrapper}>
         {showQuestion ? (
-          <Button
+          <TouchableOpacity
             dark
             title="Question"
-            mode="contained"
+            // mode="contained"
             onPress={() => handleShowAnswer('question')}
-            style={gameStyles.btn}>
-            Question
-          </Button>
+            style={styles.routeBtn}>
+           <Text style={styles.textStyle}> Question </Text>
+          </TouchableOpacity>
         ) : (
-          <Button
+          <TouchableOpacity
             mode="contained"
             title="Answer"
             dark
             onPress={() => handleShowAnswer('answer')}
-            style={gameStyles.btn}>
-            Answer
-          </Button>
+            style={styles.routeBtn}
+            >
+           <Text style={styles.textStyle}> Answer </Text>
+          </TouchableOpacity>
         )}
-        <Button
+        <TouchableOpacity
           mode="contained"
-          dark
+          
           onPress={() => {
-            handleCorrectClick('correct');
+            manageClick('correct');
           }}
-          style={gameStyles.btn}>
-          Correct
-        </Button>
-        <Button
+          style={[styles.routeBtn, {backgroundColor: 'green'}]}>
+        <Text style={styles.textStyle}> Correct answer </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           mode="contained"
-          dark
+          style={[styles.routeBtn, {backgroundColor: 'red'}]}
           onPress={() => {
-            handleCorrectClick('Incorrect');
+            manageClick('Incorrect');
           }}>
-          Incorrect
-        </Button>
+      <Text style={styles.textStyle}> Incorrect answer </Text>
+
+        </TouchableOpacity>
       </View>
     </View>
 )
@@ -157,16 +163,27 @@ return (
 
 export default Quiz;
 
-const gameStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
       width: '100%',
       justifyContent: 'center',
     },
+    routeBtn: {
+      backgroundColor: 'purple',
+      borderRadius: 5,
+      width: '80%',
+      padding: 15,
+      margin: 10,
+    },
+    textStyle: {
+      color: 'white',
+      textAlign: 'center',
+    },
     btn: {
       marginBottom: 10,
     },
-    btnContainer: {
-      marginTop: 10,
+    btnWrapper: {
+      marginTop: '60%',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
@@ -175,5 +192,8 @@ const gameStyles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    titleStyle: {
+      fontSize: 20,
+    }
   });
 

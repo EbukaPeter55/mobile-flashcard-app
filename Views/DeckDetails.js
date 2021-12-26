@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Button, Card, Paragraph } from 'react-native-paper';
 
@@ -18,25 +18,25 @@ export default function DeckList(props){
           <Paragraph>{numberOfCards} cards</Paragraph>
         </Card.Content>
       </Card>
-      <View style={styles.buttonContainer}>
-        <View style={styles.buttonSpacing}>
-          <Button
-            icon="plus"
+      <View style={styles.buttonWrapper}>
+        <View style={styles.buttonStyle}>
+          <TouchableOpacity
+            style={styles.routeBtn}
             onPress={() => {
               props.navigation.navigate('NewCard', {title});
             }}>
-            Add Card
-          </Button>
+          <Text style={{color: 'white', textAlign: 'center'}}>Add card</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.buttonSpacing}>
-          <Button
-            icon="plus"
+        <View style={styles.buttonStyle}>
+          <TouchableOpacity
+            style={styles.routeBtn}
             title="Start Quiz"
             onPress={() => {
               props.navigation.navigate('StartQuiz', {title});
             }}>
-            Start Quiz
-          </Button>
+           <Text style={{color: 'white', textAlign: 'center'}}>Start quiz</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -50,15 +50,22 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    buttonContainer: {
+    routeBtn: {
+      backgroundColor: 'purple',
+      borderRadius: 5,
+      width: '90%',
+      padding: 15,
+      margin: 10,
+    },
+    buttonWrapper: {
       paddingTop: 10,
       paddingBottom: 10,
       alignItems: 'center',
       justifyContent: 'center',
     },
-    buttonSpacing: {
+    buttonStyle: {
       paddingTop: 10,
-      width: '30%',
+      width: '80%',
     },
   });
   
