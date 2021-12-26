@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-
+// import { ADD_CARD } from '../actions';
+import { ADD_CARD } from '../redux/types';
 
 
 export default function NewCard(props) {
@@ -10,19 +11,19 @@ export default function NewCard(props) {
     const navigation = props.navigation;
     const dispatch = useDispatch();
 // Using a controlled state since this is a controlled component
-const [question, setNewQuestion] = useState('');
-const [answer, setNewAnswer] = useState('');
+const [question, setNewAddedQuestion] = useState('');
+const [answer, setNewAddedAnswer] = useState('');
 
 const handleQuesInput = answer => {
-    setNewQuestion(answer);
+    setNewAddedQuestion(answer);
 };
 const handleAnsInput = answer => {
-    setNewAnswer(answer);
+    setNewAddedAnswer(answer);
 };
 
-const handleNewCardSubmission = () => {
-    const action = {type: 'ADD_CARD', payload: {question, answer, title}};
-    dispatch(action); 
+const handleNewlyAddedQuestion = () => {
+    const addCardAction = {type: ADD_CARD, payload: {question, answer, title}};
+    dispatch(addCardAction); 
     navigation.navigate('Decks');
   };
 
@@ -33,23 +34,23 @@ const handleNewCardSubmission = () => {
         <View>
           <TextInput
             mode="flat"
-            placeholder="Enter Question"
+            placeholder="Type your question"
             onChangeText={handleQuesInput}
           />
           <TextInput
             mode="flat"
-            placeholder="Enter Answer"
+            placeholder="Type your answer"
             onChangeText={handleAnsInput}
           />
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonWrapper}>
             <Button
               raised
               dark
               theme={{roundness: 6}}
               mode="contained"
-              onPress={handleNewCardSubmission}
+              onPress={handleNewlyAddedQuestion}
               style={styles.button}>
-              Submit
+              Create question
             </Button>
           </View>
         </View>
@@ -62,15 +63,11 @@ const handleNewCardSubmission = () => {
 
 
 const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     button: {
-        marginTop: 10,
-        width: '30%'
+        marginTop: 490,
+        width: '90%'
     },
-    buttonContainer: {
+    buttonWrapper: {
         justifyContent: 'center',
         alignItems: 'center'
     }

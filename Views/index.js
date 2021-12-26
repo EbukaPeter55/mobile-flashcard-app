@@ -6,13 +6,15 @@ import HomeView from './HomeView';
 import NewCard from './NewCard';
 import NewDeck from './NewDeck';
 import Quiz from './Quiz';
+// import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs';
+
 
 
 const Stack = createNativeStackNavigator();
 
 const ScreenHeaderStyles = {
     headerStyle: {
-        backgroundColor: 'tomato',
+        backgroundColor: 'purple',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {

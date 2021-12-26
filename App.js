@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
@@ -7,6 +7,8 @@ import { store } from './store';
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import MainComponent from './Views';
+import { setLocalNotification } from './utils/notifications';
+
 
 
 const persistor = persistStore(store);
@@ -17,12 +19,20 @@ const theme = {
 
   colors: {
     ...DefaultTheme.colors,
-    primary: 'tomato',
-    accent: 'yellow'
+    primary: 'purple',
+    accent: 'purple'
   },
 };
 
+
+
 const App = () => {
+
+  useEffect (()=>{
+    setLocalNotification()
+  })
+
+
   return (
     <Provider store={store}>
     <PersistGate persistor={persistor}>

@@ -17,22 +17,23 @@ const Deck = (props) => {
   };
   return (
     <View>
-      <Card mode="outlined">
-        <Card.Title title={name} />
+      <Card mode="outlined"
+      onPress={() => {
+        props.handleDeckNavigation(props.name);
+      }}>
+        <Card.Title title={name} 
+        style={{marginLeft: 150}}/>
         <Card.Content>
-          <Paragraph>{cardNumber} cards</Paragraph>
+          <Paragraph
+          style={styles.cardText}>{cardNumber} cards</Paragraph>
         </Card.Content>
         <Card.Actions>
-          <Button onPress={deleteDeck}>Delete</Button>
-          <Button
-            onPress={() => {
-              props.handleDeckNavigation(props.name);
-            }}>
-            Details
-          </Button>
+          <Button  
+          onPress={deleteDeck}>Delete</Button>
+         
         </Card.Actions>
       </Card>
-      <Divider />
+      <Divider />   
     </View>
   );
 }
@@ -49,6 +50,15 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000',
     borderWidth: 2,
     width: 300,
+  },
+  button: {
+    color: 'red',
+    fontSize: 80,
+  },
+  cardText: {
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 15,

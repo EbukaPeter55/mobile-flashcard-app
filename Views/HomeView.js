@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, TouchableOpacity, Text } from "react-native";
 import { Button } from "react-native-paper";
 import Deck from "../components/Deck";
+import { getDailyReminderValue, timeToString } from "../utils/notifications";
+import { useNavigation } from '@react-navigation/native';
+
+
 // import DeckComp from "../components/DeckComp";
 // import TimeModal from "../components/TimeModal";
 // import { onCreateTriggerNotification } from "../utils/notifications";
+// import { setLocalNotification } from './utils/notifications';
+import { setLocalNotification } from "../utils/notifications";
 
 
 
 
-export default function ({navigation}) {
+
+export default function () {
+  const navigation = useNavigation();
+
+
+  // useEffect(()=>{
+   
+  // })
 
     const DECKS = useSelector(state => state.decks);
     // const notificationTime = useSelector(state => state.notificationShowTime);
     // const showNotification = useSelector(state => state.showNotification);
-    const firstTimeOpeningApp = useSelector(state => state.firstTimeOpeningApp);
-    const lastPlayedQuizDate = useSelector(state => state.lastPlayedQuizDate);
+    // const firstTimeOpeningApp = useSelector(state => state.firstTimeOpeningApp);
+    // const lastPlayedQuizDate = useSelector(state => state.lastPlayedQuizDate);
     const dispatch = useDispatch();
-    // const dateWhenQuizWasLastPlayed = new Date(
-    //   lastPlayedQuizDate,
-    // ).toLocaleDateString();
-    // const currentDate = new Date().toLocaleDateString();
-    // if (dateWhenQuizWasLastPlayed !== currentDate) {
-    //   dispatch({
-    //     type: 'SET_SHOW_NOTIFICATION',
-    //     payload: {showNotification: true},
-    //   });
-    // }
-  
-    // if (showNotification) {
-    //   onCreateTriggerNotification(notificationTime);
-    // }
+   
   
     const decks = Object.values(DECKS);
   
@@ -61,8 +61,17 @@ export default function ({navigation}) {
       <View style={styles.container}>
         <View style={styles.container}>
           {/* {firstTimeOpeningApp && <TimeModal />} */}
-          <View style={styles.button}>
+          <FlatList
+            data={formattedDecksData}
+            keyExtractor={item => item.id}
+            renderItem={renderDeck}
+          />
+             <View style={styles.buttonWrapper}>
+               {/* <TouchableOpacity>
+                 <Text>Add deck</Text>
+                 </TouchableOpacity> */}
             <Button
+              style ={styles.button}
               onPress={handleAddNewDeck}
               raised
               theme={{roundness: 6}}
@@ -71,11 +80,6 @@ export default function ({navigation}) {
               Add Deck
             </Button>
           </View>
-          <FlatList
-            data={formattedDecksData}
-            keyExtractor={item => item.id}
-            renderItem={renderDeck}
-          />
         </View>
       </View>
     );
@@ -89,18 +93,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    buttonWrapper: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     button: {
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 10,
-        width: '30%',
-        alignItems: 'flex-start',
-        alignContent: 'flex-start',
-        justifyContent: 'flex-start',
+        width: '90%',
+        alignItems: 'center',
+        textAlign: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
       },
       statusTitle: {
           color: 'white',
           fontSize: 20,
           fontWeight: 'bold',
-          textAlign: 'center'
+          textAlign: 'center',
       }
 })

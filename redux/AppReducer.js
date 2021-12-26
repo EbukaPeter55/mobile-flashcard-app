@@ -4,22 +4,20 @@ import {createSlice} from '@reduxjs/toolkit';
 const nextDay = new Date();
 nextDay.setDate(nextDay.getDate() + 1);
 
-const initialState = {
+const previousState = {
   firstTimeOpeningApp: true,
-  showNotification: true,
-  notificationShowTime: `${nextDay}`,
   lastPlayedQuizDate: `${new Date()}`,
   decks: {
     React: {
       title: 'React',
       questions: [
         {
-          question: 'What is React?',
-          answer: 'A library for managing user interfaces',
+          question: 'React store is what?',
+          answer: 'A single source of truth for managing state and data',
         },
         {
-          question: 'Where do you make Ajax requests in React?',
-          answer: 'The componentDidMount lifecycle event',
+          question: 'ComponentDidMount is same as useEffect hooks?',
+          answer: 'True',
         },
       ],
     },
@@ -27,9 +25,8 @@ const initialState = {
       title: 'JavaScript',
       questions: [
         {
-          question: 'What is a closure?',
-          answer:
-            'The combination of a function and the lexical environment within which that function was declared.',
+          question: 'What is a tenary operator?',
+          answer: 'An operator in Javascript Es6 used for writing condition statements, just like an if else statement',
         },
       ],
     },
@@ -38,7 +35,7 @@ const initialState = {
 
 const appSlice = createSlice({
   name: 'app',
-  initialState,
+  previousState,
   reducers: {},
   extraReducers: {
     ADD_CARD: (state, action) => {
@@ -58,19 +55,6 @@ const appSlice = createSlice({
     DELETE_DECK: (state, action) => {
       const {title} = action.payload;
       delete state.decks[title];
-    },
-    SET_NOTIFICATION_TIME: (state, action) => {
-      const {time, firstTimeOpeningApp} = action.payload;
-      state.notificationShowTime = time;
-      state.firstTimeOpeningApp = firstTimeOpeningApp;
-    },
-    SET_SHOW_NOTIFICATION: (state, action) => {
-      console.log('action -->', action);
-      const {showNotification} = action.payload;
-      if (action.payload?.payQuizDate) {
-        state.lastPlayedQuizDate = action.payload?.payQuizDate;
-      }
-      state.showNotification = showNotification;
     },
   },
 });

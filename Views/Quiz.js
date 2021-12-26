@@ -11,6 +11,7 @@ import {
     Divider,
   } from 'react-native-paper';
 import { computePercentage } from '../utils/helpers';
+import { setLocalNotification, clearLocalNotification } from '../utils/notifications';
 
 
 const Quiz = (props) => {
@@ -31,6 +32,8 @@ const Quiz = (props) => {
     if (answer === 'answer') {
       setAnswer(questions[questionIndex] && questions[questionIndex]['answer']);
       setShowQuestion(true);
+      clearLocalNotification()
+      .then(()=> setLocalNotification())
     } else {
       setAnswer(
         questions[questionIndex] && questions[questionIndex]['question'],
@@ -44,6 +47,8 @@ const Quiz = (props) => {
       if (correctness === 'correct') {
         setCorrectAnswers(correctAnswers + 1);
         setQuestionIndex(questionIndex + 1);
+        clearLocalNotification()
+        .then(()=> setLocalNotification())
       } else {
         setQuestionIndex(questionIndex + 1);
       }
