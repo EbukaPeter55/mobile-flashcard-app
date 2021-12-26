@@ -33,6 +33,7 @@ const previousState = {
   },
 };
 
+// Using Create slice from redux-tool kit
 const appSlice = createSlice({
   name: 'app',
   previousState,

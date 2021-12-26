@@ -9,14 +9,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import AppReducer from './AppReducer';
+import MainReducer from './MainReducer';
 
 const persistConfig = {
   key: 'app',
   storage: AsyncStorage,
 };
 
-const persistedReducer = persistReducer(persistConfig, AppReducer);
+const persistedReducer = persistReducer(persistConfig, MainReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,

@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store } from './redux';
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import MainComponent from './Views';
+import MainComponent from './Views/main';
 import { setLocalNotification } from './utils/notifications';
 
 
