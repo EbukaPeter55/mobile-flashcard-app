@@ -2,40 +2,41 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { TextInput, Text, Button } from 'react-native-paper';
+import { ADD_NEW_DECK } from '../redux/types';
 
 
 const NewDeck = ({navigation}) => {
     const dispatch = useDispatch();
-    const [deckName, setDeckName] = useState('');
+    const [deckCardName, setDeckCardName] = useState('');
   
-    const handleDeckName = deckName => {
-      setDeckName(deckName);
+    const handleDeckCardName = deckCardName => {
+        setDeckCardName(deckCardName);
     };
-    const handleNewDeckSubmit = () => {
-      dispatch({type: 'ADD_NEW_DECK', payload: {title: deckName}});
+    const handleAddNewDeckSubmit = () => {
+      dispatch({type: ADD_NEW_DECK, payload: {title: deckCardName}});
       navigation.navigate('Decks');
     };
 
     return (
         <View>
-            <View>
+            <View style={style.viewWrapper}>
                 <View style={style.textContainer}>
-                <Text style={style.title}>What is the title of the new deck?</Text>
+                <Text style={style.title}>What would you love to call your deck?</Text>
                 <TextInput 
                 style={style.input}
                 mode="flat"
-                placeholder="Deck Name"
-                onChangeText={handleDeckName}
+                placeholder="Your Deck Name"
+                onChangeText={handleDeckCardName}
                 />
                 </View> 
                 <View style={style.buttonContainer}>
                     <Button
-                    style={style.Button}
+                    style={style.buttonStyles}
                     title="submit"
                     raised
                     dark
                     mode="contained"
-                    onPress={handleNewDeckSubmit}
+                    onPress={handleAddNewDeckSubmit}
                     >
                     Submit
                     </Button>
@@ -49,10 +50,13 @@ const NewDeck = ({navigation}) => {
 export default NewDeck;
 
 const style = StyleSheet.create({
+    viewWrapper: {
+        marginTop: '3%',
+    },
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
     },
     title: {
         fontSize: 20,
@@ -66,12 +70,17 @@ const style = StyleSheet.create({
         marginBottom: 5
     },
     input: {
-        width: '70%',
-        height: 50
+        width: '90%',
+        height: 50,
+        marginTop: '5%'
     },
     buttonContainer: {
         paddingTop: 5,
         flexDirection: 'row',
         justifyContent: 'center'
+    },
+    buttonStyles: {
+        width: '90%',
+        marginTop: '138%'
     }
 });
