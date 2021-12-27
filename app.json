@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "mobile-flashcard",
+    "description": "A mobile flashcard game app",
     "slug": "mobile-flashcard",
     "version": "1.0.0",
     "orientation": "portrait",

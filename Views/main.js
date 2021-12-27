@@ -6,7 +6,6 @@ import HomeView from './HomeView';
 import NewCard from './NewCard';
 import NewDeck from './NewDeck';
 import Quiz from './Quiz';
-// import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 
 

@@ -10,7 +10,7 @@ import {
     Divider,
   } 
   from 'react-native-paper';
-import { computePercentage } from '../utils/helpers';
+import { calculatePercentage  } from '../utils/helpers';
 
 
 const QuizView = ({handleShowAnswer, manageClick, 
@@ -46,7 +46,7 @@ const QuizView = ({handleShowAnswer, manageClick,
                       <Dialog.Content>
                         <Paragraph>
                           Correct Score:
-                          {computePercentage(correctAnswers, totalQuestions)}%
+                          {calculatePercentage (correctAnswers, totalQuestions)}%
                         </Paragraph>
                       </Dialog.Content>
                       <Dialog.Actions>

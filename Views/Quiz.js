@@ -1,17 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { View,  StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
-import {
-    Button,
-    Text,
-    Card,
-    Paragraph,
-    Dialog,
-    Portal,
-    Divider,
-  } 
-  from 'react-native-paper';
-import { computePercentage } from '../utils/helpers';
 import { setLocalNotification, clearLocalNotification } from '../utils/notifications';
 import QuizView from '../components/QuizView';
 

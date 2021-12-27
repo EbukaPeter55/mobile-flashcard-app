@@ -1,5 +1,5 @@
 
-export const computePercentage = (value, total) => {
+export const calculatePercentage = (value, total) => {
     if (value === 0 || total === 0) {
       return 0;
     }

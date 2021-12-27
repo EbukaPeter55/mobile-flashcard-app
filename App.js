@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store } from './redux';
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import MainComponent from './Views/main';
 import { setLocalNotification } from './utils/notifications';
 
@@ -47,12 +45,3 @@ const App = () => {
 
 
 export default App;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Button, Card, Paragraph } from 'react-native-paper';
+import { Card, Paragraph } from 'react-native-paper';
 
 
 export default function DeckList(props){

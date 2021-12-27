@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { View, StyleSheet, FlatList, TouchableOpacity, Text } from "react-native";
 import { Button } from "react-native-paper";
 import Deck from "../components/Deck";
-import { getDailyReminderValue, timeToString } from "../utils/notifications";
 import { useNavigation } from '@react-navigation/native';
 
-
-// import DeckComp from "../components/DeckComp";
-// import TimeModal from "../components/TimeModal";
-// import { onCreateTriggerNotification } from "../utils/notifications";
-// import { setLocalNotification } from './utils/notifications';
 import { setLocalNotification } from "../utils/notifications";
 
 
@@ -21,15 +15,8 @@ export default function () {
   const navigation = useNavigation();
 
 
-  // useEffect(()=>{
-   
-  // })
 
     const DECKS = useSelector(state => state.decks);
-    // const notificationTime = useSelector(state => state.notificationShowTime);
-    // const showNotification = useSelector(state => state.showNotification);
-    // const firstTimeOpeningApp = useSelector(state => state.firstTimeOpeningApp);
-    // const lastPlayedQuizDate = useSelector(state => state.lastPlayedQuizDate);
     const dispatch = useDispatch();
    
   
@@ -60,7 +47,6 @@ export default function () {
     return (
       <View style={styles.container}>
         <View style={styles.container}>
-          {/* {firstTimeOpeningApp && <TimeModal />} */}
           <FlatList
             data={formattedDecksData}
             keyExtractor={item => item.id}
