@@ -1,5 +1,5 @@
 # mobile-flashcard-app
-Final project for the React Nanodegree program. A React native project for that has been built and tested for the Android platform.
+Final project for the React Nanodegree program. A React native project that has been built and tested for the Android platform.
 
 Mobile flash card is a gamelike quiz app, where users can take up questions previously created. Each of this question
 has a button to view the answer, and two choices which are: Correct or Incorrect. Users are meant to select one option
@@ -32,4 +32,4 @@ If you discover any security related issues, please email peterdbrainy5@gmail.co
 #Credits
 Udacity React Nanodegree
 
-I got stuck at the point of fetching the card. So I got an insight from bozicschucky repository
+I got stuck at the point of fetching the decks. So I got an insight from bozicschucky repository
